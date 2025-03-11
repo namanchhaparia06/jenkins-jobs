@@ -19,8 +19,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6'
-                        sh 'mkdir -p JOB_1/JOB_2'
+                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6/JOB_1'
+                        sh 'mkdir -p JOB_2'
                         echo 'JOB_2 directory created successfully'
                     } catch (Exception e) {
                         error "Job 2 failed: ${e.message}"
@@ -33,8 +33,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6'
-                        sh 'mkdir -p JOB_1/JOB_2/JOB_3'
+                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6/JOB_1/JOB_2'
+                        sh 'mkdir -p JOB_3'
                         echo 'JOB_3 directory created successfully'
                     } catch (Exception e) {
                         error "Job 3 failed: ${e.message}"
