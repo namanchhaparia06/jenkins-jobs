@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+    stages {
+        stage('Job 1 - Create JOB_1 Directory') {
+            steps {
+                script {
+                    try {
+                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6'
+                        sh 'mkdir -p JOB_1'
+                        echo 'JOB_1 directory created successfully'
+                    } catch (Exception e) {
+                        error "Job 1 failed: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('Job 2 - Create JOB_2 Directory') {
+            steps {
+                script {
+                    try {
+                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6'
+                        sh 'mkdir -p JOB_1/JOB_2'
+                        echo 'JOB_2 directory created successfully'
+                    } catch (Exception e) {
+                        error "Job 2 failed: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('Job 3 - Create JOB_3 Directory') {
+            steps {
+                script {
+                    try {
+                        sh 'cd /Users/namanchhaparia/Desktop/_/MPSTME/SEM6/APD/Lab6'
+                        sh 'mkdir -p JOB_1/JOB_2/JOB_3'
+                        echo 'JOB_3 directory created successfully'
+                    } catch (Exception e) {
+                        error "Job 3 failed: ${e.message}"
+                    }
+                }
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline executed successfully'
+        }
+        failure {
+            echo 'Pipeline failed! Sending email notification...'
+            emailext(
+                subject: "Jenkins Job Failure: ${currentBuild.fullDisplayName}",
+                body: "The Jenkins build has failed. Please check the logs for more details.",
+                to: 'chhaparianaman@gmail.com'
+            )
+        }
+    }
+}
